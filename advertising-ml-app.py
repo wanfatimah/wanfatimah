@@ -1,7 +1,5 @@
 import streamlit as st
 import pandas as pd
-from sklearn import datasets
-from sklearn.ensemble import RandomForestClassifier
 
 st.write("""
 # Advertising Sales Prediction App
@@ -26,22 +24,9 @@ df = user_input_features()
 st.subheader('User Input parameters')
 st.write(df)
 
-advertising = datasets.load_advertising()
-X = advertising.data
-Y = advertising.target
+loaded_model = pickle.load(open("advertising.h5", "rb"))
 
-clf = RandomForestClassifier()
-clf.fit(X, Y)
-
-prediction = clf.predict(df)
-prediction_proba = clf.predict_proba(df)
-
-st.subheader('Class labels and their corresponding index number')
-st.write(advertising.target_names)
+prediction = loaded_model.predict(df)
 
 st.subheader('Prediction')
-st.write(advertising.target_names[prediction])
-#st.write(prediction)
-
-st.subheader('Prediction Probability')
-st.write(prediction_proba)
+st.write(prediction)
