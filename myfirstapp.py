@@ -7,8 +7,8 @@ st.header("My first Streamlit App")
 
 option = st.sidebar.selectbox(
     'Select a mini project',
-     ['line chart','map','T n C','Long Process])
-     
+     ['line chart','map','T n C','Long Process'])
+
 if option=='line chart':
     chart_data = pd.DataFrame(
     np.random.randn(20, 3),
@@ -22,7 +22,7 @@ elif option=='map':
     columns=['lat', 'lon'])
 
     st.map(map_data)
-    
+
 elif option=='T n C':
     st.write('Before you continue, please read the [terms and conditions](https://www.gnu.org/licenses/gpl-3.0.en.html)')
     show = st.checkbox('I agree the terms and conditions')
